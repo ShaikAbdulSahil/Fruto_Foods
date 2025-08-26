@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Akaya Kanadaka";
+  src: url("./assets/fonts/AkayaKanadaka-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Athiti";
+  src: url("./assets/fonts/Athiti-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Apply Akaya globally */
+@layer base {
+  html {
+    font-family: "Akaya Kanadaka", sans-serif;
+  }
+}
