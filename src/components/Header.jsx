@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../assets/images/logo_small.png';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // SVG Icons are small and only used here, so they can stay in this file.
 const MenuIcon = (props) => (
@@ -12,26 +12,30 @@ const CloseIcon = (props) => (
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navLinks = ["Home", "About", "Our Team", "Safety Quality", "Contact", "Privacy Policy"];
+  const navLinks = [{ name: "Home", to: "/" }, { name: "About", to: "/about" }, { name: "Our Team", to: "/our-team" }, { name: "Contact", to: "/contact" }];
 
   return (
     <header className="bg-[#B0D79F] shadow-md  top-0 z-50  ">
       <nav className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center mb-1">
-          <div className="flex items-center">
-            <img src={logo} alt="Fruto Foods" className="h-30 mr-2" />
+          <div className="flex flex-col items-center">
+            <img src={logo} alt="Fruto Foods" className="md:h-40 h-20 ml-2" />
+            <p className='text-xs md:text-sm ml-4 font-semibold'><i>we build trust</i></p>
           </div>
           <div className="hidden md:flex items-center space-x-7">
             {navLinks.map((link, index) => (
-              <Link
-                key={`${link}-${index}`}
-                to={link.toLowerCase() === "home" ? "/" : `/${link.toLowerCase().replace(/\s+/g, "-")}`}
-                className="px-2 py-2 text-black text-xl font-sans font-semibold
-            rounded-lg border-2 border-transparent transition-all duration-300 ease-in-out
-            hover:border-black hover:shadow-4xl"
+              <NavLink
+                key={link.name}
+                to={link.to}
+                className={({ isActive }) =>
+                  `px-2 py-2 text-black text-xl font-sans font-semibold
+    rounded-lg    transition-all duration-300 ease-in-out
+    hover:border-2 hover:shadow-lg
+    ${isActive ? 'border-2 shadow-lg' : ''}`
+                }
               >
-                {link}
-              </Link>
+                {link.name}
+              </NavLink>
             ))}
           </div>
           <div className="md:hidden">
@@ -42,12 +46,19 @@ const Header = () => {
         </div>
         {isOpen && (
           <div className="md:hidden mt-4">
-            <ul className="flex flex-col space-y-2">
+            <ul className="flex flex-col items-center space-y-2">
               {navLinks.map(link => (
-                <li key={link}>
-                  <a href={`#${link.toLowerCase().replace(' ', '-')}`} className="block px-4 py-2 text-black font-semibold font-sans rounded hover:bg-green-100" onClick={() => setIsOpen(false)}>
-                    {link}
-                  </a>
+                <li key={link.name}>
+                  <NavLink
+                    to={link.to}
+                    className={({ isActive }) =>
+                      `block px-4 py-2 text-black font-semibold font-sans rounded
+               ${isActive ? 'bg-green-700' : 'hover:bg-green-300'}`
+                    }
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </NavLink>
                 </li>
               ))}
             </ul>
