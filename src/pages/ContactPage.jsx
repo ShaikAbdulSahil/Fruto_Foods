@@ -29,7 +29,7 @@ function ContactPage() {
       subject: `New Contact Form Submission from ${formData.name}`,
       from_name: "Fruto Foods",
       replyto: formData.email,
-      access_key: "YOUR_ACCESS_KEY_GOES_HERE"
+      access_key: "ca307d10-b986-47a0-ae6d-eda368de80fa"
     };
 
     try {
@@ -92,7 +92,7 @@ function ContactPage() {
             </div>
             <div className='md:flex md:flex-row md:text-2xl gap-3 justify-around'>
               <div className="mb-4">
-                <label htmlFor="mobile" className="block text-lg font-medium text-gray-700 md:text-2xl mb-2">Mobile</label>
+                <label htmlFor="mobile"  className="block text-lg font-medium text-gray-700 md:text-2xl mb-2">Mobile</label>
                 <input type="number" id="mobile" name="mobile" value={formData.mobile} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#c33E2F]" placeholder="Your Mobile Number" />
               </div>
               <div className="mb-4">
