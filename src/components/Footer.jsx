@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   const QuickLinks = [
     { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about-us' },
+    { name: 'About Us', href: '/about' },
     { name: 'Safety & Quality', href: '/safety-quality' },
     { name: 'Contact', href: '/contact' },
     { name: 'Our Team', href: '/our-team' },
@@ -45,7 +45,9 @@ const Footer = () => {
             <div className="flex flex-row space-x-0 md:space-x-4">
               <SocialIcon imgSrc={facebook} alt="Facebook" link="https://facebook.com" w={4} h={4} />
               <SocialIcon imgSrc={linkedin} alt="LinkedIn" link="https://linkedin.com" w={4} h={4} />
-              {/* <SocialIcon imgSrc={whatsapp} alt="WhatsApp" link="https://whatsapp.com" w={7} h={7} sw={4} sh={4} /> */}
+              <span className="hidden md:block">
+                <SocialIcon imgSrc={whatsapp} alt="WhatsApp" link="https://whatsapp.com" w={7} h={7} sw={4} sh={4} />
+              </span>
               <SocialIcon imgSrc={instagram} alt="Instagram" link="https://instagram.com" w={4} h={4} />
             </div>
           </div>
